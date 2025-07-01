@@ -4,15 +4,21 @@ idx2tag = {0: 'B-CARDINAL', 1: 'B-DATE', 2: 'B-EVENT', 3: 'B-FAC', 4: 'B-GPE', 5
 
 def load_pipeline():
 
-    model = AutoModelForTokenClassification.from_pretrained("ARUNNIVAAS7299/NER-Bert-Token-Classifier")
-    tokenizer = AutoTokenizer.from_pretrained("ARUNNIVAAS7299/NER-Bert-Token-Classifier")
+    try:
+       
+        model = AutoModelForTokenClassification.from_pretrained("ARUNNIVAAS7299/NER-Bert-Token-Classifier")
+        tokenizer = AutoTokenizer.from_pretrained("ARUNNIVAAS7299/NER-Bert-Token-Classifier")
 
-    # 🔥 Set label mappings
-    model.config.id2label = idx2tag
-    model.config.label2id = {v: k for k, v in idx2tag.items()}
+        # 🔥 Set label mappings
+        model.config.id2label = idx2tag
+        model.config.label2id = {v: k for k, v in idx2tag.items()}
 
-    ner_pipeline = pipeline("ner", model = model, tokenizer=tokenizer, aggregation_strategy="simple")
-    return ner_pipeline
+        ner_pipeline = pipeline("ner", model = model, tokenizer=tokenizer, aggregation_strategy="simple")
+        return ner_pipeline
+    
+    except Exception as e:
+        print(f"Error loading NER pipeline: {e}")
+        return None
 
 def get_entities(text, ner_pipeline):
     return ner_pipeline(text)
