@@ -100,11 +100,11 @@ Entities:
 
 ## 🖼️ Example: Input Text
 
-![Input Screenshot](assets/input_example.png)
+![Input Screenshot](https://github.com/arun-nivaas/NER-model-streamlit-002/blob/main/asserts/input_example.png?raw=true)
 
 ---
 
 ## 🖼️ Example: Output with Detected Entities
 
-![Output Screenshot](assets/output_example.png)
+![Output Screenshot](https://github.com/arun-nivaas/NER-model-streamlit-002/blob/main/asserts/output_example.png?raw=true)
 
